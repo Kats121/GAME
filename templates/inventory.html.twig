@@ -3,3 +3,14 @@
   <p1>Введите название предмета</p1>  <input type="text" name="nazvanie">
     <input type="submit" value="отправить">
 </form>
+
+<form method="post" action="{{ path('inventory') }}">
+<p1>"Введите название предмета для удаления"</p> <input type="text" name="name">
+ <button type="submit">Удалить</button>
+ </form>
+
+  <form method="post" action="{{ path('inventory') }}">
+   <p1>"Введите имя"</p1> <input type="text" name="old_name">
+    <p1>"Введите новый предет"</p1> <input type="text" name="new_nazvanie">
+    <button type="submit">Обновить</button>
+</form>

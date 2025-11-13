@@ -19,6 +19,8 @@ class Player
 
     #[ORM\Column(length: 255)]
     private ?string $lvl = null;
+    #[ORM\Column(type: Types::BLOB)]
+    private $img;
 
     public function getId(): ?int
     {
@@ -45,6 +47,17 @@ class Player
     public function setLvl(string $lvl): static
     {
         $this->lvl = $lvl;
+
+        return $this;
+    }
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    public function setImg($img): static
+    {
+        $this->img = $img;
 
         return $this;
     }

@@ -31,6 +31,32 @@ class SubjectController extends AbstractController
         $entityManager->flush();
         return new Response('Предмет добавлен: ' . $subject->getId());
     }
+     #[Route('/entityPlayer', name: 'player', methods: ["POST"])]
+    public function delete(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $subject= $request->request->get('nazvanie');
+        $peopleRepository = $entityManager->getRepository(Subject::class);
+        $subject = $peopleRepository->findOneBy(['nazvanie' => $subject]);
+
+        $entityManager->remove($subject);
+        $entityManager->flush();
+        return new Response('Пользователь с именем' . $subject->getNazvanie() . ' был удален.');
+    }
+        #[Route('/entitySubject', name: 'subject', methods: ["POST"])]
+     public function update( Request $request, EntityManagerInterface $entityManager): Response 
+     {
+    $oldNazvanie = $request->request->get('old_nazavanie'); 
+    $newRedcost  = $request->request->get('new_redcost'); 
+    $newPrice  = $request->request->get('new_price');    
+    $repository = $entityManager->getRepository(subject::class);
+    $subject = $repository->findOneBy(['name' => $oldNazvanie]);
+    $subject->setRedcost($newRedcost);
+    $subject->setPrice($newPrice);
+
+    $entityManager->flush();
+
+    return new Response('Данные обновлены');
+     }
     #[Route('/formsubject', name: 'formsubject')]
     public function formplayer(): Response
     {

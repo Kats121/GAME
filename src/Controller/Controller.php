@@ -23,11 +23,38 @@ class Controller extends AbstractController
         $player = new Player();
         $player->setName($name);
         $player->setLvl($lvl);
-
+    
         $entityManager->persist($player);
         $entityManager->flush();
         return new Response('Игрок добавлен: ' . $player->getId());
     }
+  #[Route('/entityPlayer', name: 'player', methods: ["POST"])]
+    public function delete(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $player = $request->request->get('name');
+        $peopleRepository = $entityManager->getRepository(Player::class);
+        $player = $peopleRepository->findOneBy(['name' => $player]);
+
+        $entityManager->remove($player);
+        $entityManager->flush();
+        return new Response('Пользователь с именем' . $player->getName() . ' был удален.');
+    }
+    #[Route('/entityPlayer', name: 'player', methods: ["POST"])]
+     public function update( Request $request, EntityManagerInterface $entityManager): Response 
+     {
+    $oldName = $request->request->get('old_name'); 
+    $newName = $request->request->get('new_name'); 
+    $newLvl  = $request->request->get('new_lvl'); 
+    $repository = $entityManager->getRepository(Player::class);
+    $player = $repository->findOneBy(['name' => $oldName]);
+    $player->setName($newName);
+    $player->setLvl($newLvl);
+
+    $entityManager->flush();
+
+    return new Response('Данные обновлены');
+     }
+    
     #[Route('/formplayer', name: 'formplayer')]
     public function formplayer(): Response
     {

@@ -1,5 +1,18 @@
 <form method="post" action="{{ path('player') }}">
 <input type="text" name="name">
 <input type="number" name="lvl">
+<input type="img scr" name="img">
 <input type="submit" value="отправить">
+</form>
+
+<form method="post" action="{{ path('player') }}">
+<p1>"Введите имя игрока для удаления"</p> <input type="text" name="name">
+ <button type="submit">Удалить</button>
+ </form>
+
+ <form method="post" action="{{ path('people') }}">
+   <p1>"Введите старое имя"</p1> <input type="text" name="old_name">
+    <p1>"Введите новое имя"</p1> <input type="text" name="new_name">
+    <p1>"Введите новый лвл"</p1> <input type="text" name="new_lvl">
+    <button type="submit">Обновить</button>
 </form>
