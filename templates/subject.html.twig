@@ -4,6 +4,12 @@
    <p1>Введите цену предмета </p1> <input type="number" name="price">
     <input type="submit" value="отправить">
 </form>
+
+<form method="post" action="{{ path('player') }}">
+<p1>"Введите название предмета для удаления картинки"</p> <input type="text" name="name">
+ <button type="submit">Удалить картинку</button>
+ </form>
+
 <form method="post" action="{{ path('subject') }}">
 <p1>"Введите название предмета для удаления"</p> <input type="text" name="name">
  <button type="submit">Удалить</button>

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\SubjectRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SubjectRepository::class)]
@@ -21,6 +22,9 @@ class Subject
 
     #[ORM\Column(length: 255)]
     private ?string $price = null;
+
+    #[ORM\Column(type: Types::BLOB)]
+    private $img;
 
     public function getId(): ?int
     {
@@ -59,6 +63,17 @@ class Subject
     public function setPrice(string $price): static
     {
         $this->price = $price;
+
+        return $this;
+    }
+     public function getImg()
+    {
+        return $this->img;
+    }
+
+    public function setImg($img): static
+    {
+        $this->img = $img;
 
         return $this;
     }
