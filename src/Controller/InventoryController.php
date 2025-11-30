@@ -12,7 +12,7 @@ use App\Repository\InventoryRepository;
 
 class InventoryController extends AbstractController
 {
-    #[Route('/entityI   nventory', name: 'inventory', methods: ["POST"])]
+    #[Route('/entityInventory', name: 'inventory', methods: ["POST"])]
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         $name = $request->request->get('name');

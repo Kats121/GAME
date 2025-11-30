@@ -1,0 +1,25 @@
+<html>
+<body>
+<h2>инвентарь игроков</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>имя игрока</th>
+            <th>название предмета</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for inventory in inventories %}
+            <tr>
+                <td>{{ inventory.ID }}</td>
+                <td>{{ inventory.name }}</td>
+                <td>{{ inventory.nazvanie }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<form method="post" action="{{ path('excel') }}">
+<input type="submit" value="скачать таблицу">
+</body>
+</html>
