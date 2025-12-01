@@ -1,0 +1,27 @@
+<html>
+<body>
+<h2>Список предметов</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Название</th>
+            <th>редкость</th>
+            <th>прайс</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for psubject in subjects %}
+            <tr>
+                <td>{{ subject.nazvanie }}</td>
+                <td>{{ subject.redcost }}</td>
+                <td>{{ subject.price }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Нет данных.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

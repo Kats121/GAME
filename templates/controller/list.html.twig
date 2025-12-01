@@ -1,0 +1,27 @@
+<html>
+<body>
+<h2>Список клиентов</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Ник</th>
+            <th>уровень</th>
+            <th>картинка</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for player in players %}
+            <tr>
+                <td>{{ player.name }}</td>
+                <td>{{ player.lvl }}</td>
+                <td>{{ player.img }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Нет данных.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

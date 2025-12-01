@@ -1,0 +1,25 @@
+<html>
+<body>
+<h2>ИНВЕНТАРЬ</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Ник</th>
+            <th>название предмета</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for inventory in inventories %}
+            <tr>
+                <td>{{ inventory.name }}</td>
+                <td>{{ inventory.nazvanie }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">Нет данных.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
